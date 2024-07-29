@@ -5,7 +5,7 @@ Ini adalah Project/Tugas berkelanjutan di week4, kalian boleh memilih untuk mema
 tapi untuk contoh yang gua berikan disini, gua memakai prisma jadi kita pake mysql dari railway.
 pertama kita pahamin Relasi Inventory System terlebih dahulu: 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/8172b22b-959b-4305-b12b-cfc9c4b439b0)
 
 Ini adalah List API yang perlu di buat di Inventory System
 
@@ -99,7 +99,7 @@ Di Inventory system ada beberapa hal yang harus kita set up, beda dari project s
 
 kalian bisa copas dari fancy-todo-prisma kemarin buat awalan set up :
 
-# Gambar
+![image](https://github.com/user-attachments/assets/84e51c0e-3c45-4837-89b1-3fb98c283b47)
 
 ## New Folder Setup 
 setelah itu tambahkan folder baru untuk stuktur baru kita :
@@ -111,7 +111,7 @@ setelah itu tambahkan folder baru untuk stuktur baru kita :
 
 - validations : folder untuk menyimpan file file validation menggunakan library joi, file ini di combine dengan middleware validate untuk validasi body sesuai API dan schema yang kita buat.
 
-# Gambar
+![image](https://github.com/user-attachments/assets/c21846c2-0a4f-4507-9312-e809316b52e2)
 
 ##  package.json 
 Ada banyak sekali library baru yang harus kalian pelajari untuk struktur advance ini, jadi kalian bisa copas pakcage.json ini untuk menginstall sekaligus library yang kita butuhkan (dari pada npm install satu persatu).
