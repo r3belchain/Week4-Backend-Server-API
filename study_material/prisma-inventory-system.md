@@ -149,4 +149,4 @@ module.exports = app;
 
 disini router kita comment, karena kita belum mulai untuk develop API. 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/f0b5aebb-1f96-432d-9cc5-a8b5e62e158e)
