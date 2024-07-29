@@ -63,7 +63,7 @@ Sekarang kalian telah berhasil membuat database di MongoDB Atlas dan mendapatkan
 
 URL koneksi ini yang bakal kita pake untuk implementasi di ODM Mongoose. 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/88f6fa3e-9811-464c-a88e-1e6a2ae6e3b3)
 
 ## Railway
 "Railway" adalah platform hosting aplikasi modern yang memudahkan penyebaran aplikasi yang siap untuk produksi dengan cepat. Railway menawarkan layanan database yang persisten untuk PostgreSQL, MySQL, MongoDB, dan Redis, serta layanan aplikasi dengan repositori GitHub sebagai sumber penyebaran.
@@ -72,16 +72,16 @@ https://railway.app/
 
 kalian bisa langsung daftar di railway nya, dan buat new project. pilih provision Mysql untuk database yang bakal kita implement di ORM Prisma
 
-# Gambar
+![image](https://github.com/user-attachments/assets/21b4099c-1939-4dcb-9071-1bde1e8d1857)
 
 Setelah kalian pilih Provision MySQL, maka railway otomatis akan membuatkan cloud database mysql.
 
 silahkan check dasboard kalian dan klik database mysql nya. maka tampilan nya akan seperti ini
 
-# Gambar
+![image](https://github.com/user-attachments/assets/f4c55897-cbaf-4ae5-a2a7-08c08b6af6ef)
 
 pilih tab connect maka kalian akan lihat credential database kalian
 
-# Gambar 
+![image](https://github.com/user-attachments/assets/26402e1d-23d9-435d-9d60-bd815c5fd1e3)
 
 copy MYSQL_URL, itulah URL yang akan kalian pakai di week4 ini.
