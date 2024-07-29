@@ -7,7 +7,8 @@ Buat lah project bakend menggunakan express js + prisma dan mysql untuk database
 
 atau kalian boleh ikutin dari project simple yang gua buat.
 
-# Gambar
+![image](https://github.com/user-attachments/assets/2f373a45-f4e7-403b-88b9-25aae6081834)
+
 
 **Relation Effect**
 - User mempunyai banyak Todo ( One To Many )
@@ -20,7 +21,7 @@ dari week4 kita harus mulai belajar standarisasi code, jadi penamaan dan struktu
 Service ini pengganti folder Model di project sebelumnya, karena schema model prisma itu berbeda dia ada di folder Prisma  dengan filname schema.prisma
 jadi file service ini khusus untuk code code mengolah data dengan prisma. (tidak boleh panggil prisma di controller)
 
-# Gambar
+![image](https://github.com/user-attachments/assets/002e6866-365a-467f-a35e-64f28beadc29)
 
 ## Install Module
 Seperti biasa, sebelum implementasi di project kita perlu install modul modul yang di perlukan.
@@ -140,8 +141,4 @@ jika dijalankan, maka set up project kalian akan seperti ini :
 npm run dev
 ```
 
-# Gambar
-
-***UPDATE PROJECT STRUCTURE***
-
-# Gambar
+![image](https://github.com/user-attachments/assets/0f86a8ca-fe49-4cd9-8837-69295fccce8f)
