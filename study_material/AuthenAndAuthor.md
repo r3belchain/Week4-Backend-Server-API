@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://i.postimg.cc/SQX1CCDy/rpn.png" width="100" height="100" border="10"/>
+</p>
+
 # Authentication & Authorization
 
 Authentication (Otentikasi) dan Authorization (Otorisasi) adalah dua konsep kunci dalam pengembangan backend yang berperan penting dalam menjaga keamanan dan mengendalikan akses ke sumber daya sistem. Berikut penjelasan singkat tentang keduanya:
@@ -30,7 +34,7 @@ Authorization adalah proses untuk mengontrol akses user atau entitas yang telah 
 
 Kombinasi dari otentikasi dan otorisasi membantu membangun sistem yang aman, memastikan bahwa hanya user yang diotentikasi yang memiliki akses yang sesuai ke sumber daya aplikasi, dan ini adalah bagian penting dari strategi keamanan dalam pengembangan backend. 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/62ef3ab4-2740-47e7-b368-6b0b22397eb4)
 
 ***Cara kerja Authentication & Authorization di Express.js***
 Cara kerja Authentication (Otentikasi) dan Authorization (Otorisasi) di aplikasi Express.js melibatkan beberapa langkah dan konsep utama. Berikut adalah panduan singkat tentang cara kerja keduanya di Express.js:
@@ -59,7 +63,7 @@ Cara kerja Authentication (Otentikasi) dan Authorization (Otorisasi) di aplikasi
 
 Dalam Express.js, Kalian dapat mengimplementasikan otentikasi dan otorisasi dengan menggunakan middleware khusus, seperti passport untuk otentikasi dan middleware tambahan untuk otorisasi. Kalian juga dapat memanfaatkan library atau framework yang menyediakan solusi siap pakai untuk otentikasi dan otorisasi. 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/3750b30e-6562-4caf-96e2-2e8de3fe62fc)
 
 ## ENKRIPSI PASSWORD
 Mengapa kita menggunakan enkripsi password user dalam backend menggunakan algoritma seperti bcrypt adalah karena keamanan. Enkripsi password adalah praktik keamanan yang penting dalam pengembangan aplikasi web atau sistem yang melibatkan otentikasi user. Berikut adalah beberapa alasan mengapa kita perlu menggunakan bcrypt atau algoritma hashing lainnya untuk mengenkripsi password:
@@ -80,11 +84,12 @@ Mengapa kita menggunakan enkripsi password user dalam backend menggunakan algori
 
 Dalam pengembangan aplikasi web, sangat penting untuk memperlakukan keamanan kata sandi user dengan serius. Dengan menggunakan algoritma hashing seperti bcrypt, Kalian dapat memberikan perlindungan yang kuat terhadap kata sandi user dan menjaga data mereka tetap aman bahkan dalam skenario yang paling buruk. 
 
+![image](https://github.com/user-attachments/assets/f92ddd0a-359c-4865-8135-1b4613d13009)
+
 Explore : 
 JWT : https://jwt.io/
 passport.js : https://www.passportjs.org/
 bcrypt.js : https://www.npmjs.com/package/bcryptjs
-
 
 ## Set Up Auth Inventory System
 Kita akan melakukan set up Auth untuk project IS, ini full gua guide sampe register + login.
@@ -506,7 +511,7 @@ kita akan membuat route pertama kita yaitu auth route API, sebelum membuatnya di
 
 buatlah folder v1 di dalam folder routes. dan buat 2 file didalama folder v1, auth.route.js dan index.js 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/b92a8390-108a-47aa-a1b5-d11a71b5b6c6)
 
 ### Auth Route
 
