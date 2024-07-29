@@ -15,7 +15,8 @@ Terdapat beberapa jenis database NoSQL, termasuk:
 
 Database NoSQL memiliki peran yang penting dalam pengembangan aplikasi modern yang berfokus pada skalabilitas, fleksibilitas, dan performa. Mereka dapat digunakan untuk berbagai jenis aplikasi, termasuk e-commerce, media sosial, analisis data, dan banyak lagi. 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/594c26ec-b3fb-4ddc-ac34-07f5f0830ce6)
+
 
 ## Gimana cara kerja Relasi No SQL ?
 Relasi NoSQL adalah konsep yang agak berbeda dari relasi dalam database relasional tradisional. Database NoSQL biasanya dirancang untuk mengelola data tanpa skema yang ketat dan tidak bergantung pada hubungan tabel seperti dalam database relasional. Meskipun begitu, beberapa database NoSQL dapat menangani relasi antara data dengan beberapa cara berikut:
@@ -30,4 +31,4 @@ Relasi NoSQL adalah konsep yang agak berbeda dari relasi dalam database relasion
 
 Pilihan cara mengelola relasi dalam database NoSQL bergantung pada jenis database yang kalian gunakan dan kebutuhan aplikasi kalian. Penting untuk memahami model data dan fitur yang ditawarkan oleh database NoSQL tertentu untuk memilih pendekatan yang paling sesuai dengan kasus penggunaan kalian.
 
-# Gambar
+![image](https://github.com/user-attachments/assets/b1061c2b-f1c7-4559-82e8-d8ce921ad9d7)
