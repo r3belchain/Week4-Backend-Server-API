@@ -1,4 +1,4 @@
-# Logging System (Morgan) | Part 35
+# Logging System (Morgan)
 
 Setelah buat offline logger untuk menangkap proses error di backend, kita perlu logger lain untuk menyempurnakan logging system kita. Yaitu membut http request logger middleware yang berfungsi sebagai pencatatan setiap request ke server.
 
