@@ -282,4 +282,4 @@ process.on('SIGTERM', () => {
 
 ## Check Point Inventory System
 
-# Gambar
+![image](https://github.com/user-attachments/assets/65efc4f9-5ad3-48ec-a2d7-0524d18aaced)
