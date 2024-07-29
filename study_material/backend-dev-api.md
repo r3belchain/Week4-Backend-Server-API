@@ -1,7 +1,3 @@
-<p align="center">
-<img src="https://i.postimg.cc/SQX1CCDy/rpn.png" width="100" height="100" border="10"/>
-</p>
-
 # Week4-Backend-Development-API
 
 Hello phase 1 fighter, perjalanan belajar backend kalian sudah mencapai 50%. kalian sudah mempelajari cara backend API bekerja dan handling logic dengan database SQLite. good job buat kalian semua yang mengerjakan semua task nya 👍🏻.  kita akan lanjutkan perjalanan kita untuk menyempurnakan struktur backend API kita dengan implement middleware next level. karena struktur kalian sekarang itu masih belum ready untuk production dan masih berantakan, di week4 ini kita akan buat backend API yang scalable, clean, dan ready to production code. mulai dari refactoring cara komunikasi database kita meggunakan ORM (prisma), trus kita belajar database No SQL yaitu mongoDb sampai kita bisa menggunakan cloud database, kita juga akan membuat errorhandler untuk handling error yang rapih, membuat logging system agar setiap eksekusi code tercatat di server, kita akan mempelajari Security backend mulai dari hashing JWT, helmet untuk protect headers, dan cors untuk mencegah dispatch dari website lain. Kita juga bakal refactoring cara validasi payload dari body menggunakan joi. semua teknologi ini memakai techstack terupdate jadi week4 ini penting untuk karir backend kalian. 
