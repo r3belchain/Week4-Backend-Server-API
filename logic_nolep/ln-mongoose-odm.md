@@ -12,7 +12,7 @@ Jika kalian ingin membuat fancy todo odm, jangan lupa ganti struktur kalian sepe
 Fancy Todo ODM
 Jika kalian ingin membuat fancy todo odm, jangan lupa ganti struktur kalian seperti ini: 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/14f89613-a0b8-443f-8a7d-ea9291eea2ae)
 
 setelah itu install library "dotenv" dan pasang di index.js agar kalian bisa akses file ENV di code kalian.
 
