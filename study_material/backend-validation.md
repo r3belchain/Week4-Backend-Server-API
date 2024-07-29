@@ -583,7 +583,7 @@ karna middleware auth(), dia akan membaca authentication di headers kalian. disi
 jalankan login api, copy access.token dari response api dan masukan ke bearer token di headers saat hit api post category.
 di postman kalian bisa ke tab Authorization dan pilih type Bearer token.
 
-# Gambar
+![image](https://github.com/user-attachments/assets/80a02d4f-bcc6-414c-9553-d9a9182063b7)
 
 masukan name di body category, dan hit api nya.
 
