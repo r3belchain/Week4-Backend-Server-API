@@ -28,7 +28,8 @@ module.exports = app;
 kita mempunya 1 url API pertama untuk initiallize server, yaitu "/" root URL untuk testing "Hello World". Jika kita hit API tersebut, di terminal kita tidak ada pencatatan sama sekali. 
 
 contoh diterminal setelah hit API:
-# Gambar
+
+![image](https://github.com/user-attachments/assets/e48f6f5b-d1cc-4c15-b94c-c5a6e64589fc)
 
 nah ini sangatlah tidak bagus, karena setiap request apapun ke backend kita tidak tau apa yang dilakukan sama backend terakhir kalinya. jadi kita harus buat http request logger untuk tracking proses API yang di hit ke backend.
 
@@ -175,4 +176,4 @@ mungkin disini kalian bingung, kenapa kita harus check dahulu env kita test atau
 ## Inventory System Checkpoint
 jalankan server kalian, dan hit url "/" untuk check apakah morgan kita jalan atau tidak.
 
-# Gambar
+![image](https://github.com/user-attachments/assets/9946ac00-ec5b-45b5-b3da-e97fff513a89)
