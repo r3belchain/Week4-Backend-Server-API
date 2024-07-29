@@ -1,4 +1,4 @@
-# Backend Validatio
+# Backend Validation
 
 Dalam development backend API, validasi data akan menjadi sangat penting. karena request data yang tidak sesuai dengan schema database akan mengakibatkan error ketika kita query atau komunikasi ke database. nah validasi data yang dimaksud adalah input dari body request user setiap kita melakukan hit API.
 
