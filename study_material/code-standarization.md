@@ -172,7 +172,7 @@ coverage
 Checkpoint Inventory System
 Kita sudah melakukan set up untuk standarisasi code pada project ini, jadi code kalian nanti bakal lebih tertata rapih dibandingkan sebelumnya.
 
-# Gambar
+![image](https://github.com/user-attachments/assets/9bbda08e-65f3-4379-9b5f-abe3deea8944)
 
 ## Cara menggunakan fitur ESLINT
 masih ingat set up package.json kita , kita menulis command script ini :
