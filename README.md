@@ -6,11 +6,7 @@ dan diakhir week4 gua bakal share template backend gua yang sering gua pake buat
 
 ## Week 4 (Berurutan) 
 - [Backend Development API (teorikal) ](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/study_material/backend-dev-api.md)
-- [NoSQL Database](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/study_material/nosql-database.md)
-- [Document Databse MongoDB)](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/study_material/document-db-mongo.md)
-- [Logic Nolep (Online Course MongoDB) :exploding_head: ](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/logic_nolep/ln-online-course-mongodb.md)
 - [Logic Nolep (Address Book) :exploding_head: ](https://github.com/RPN-Phase-1/Week3-Backend-MVC-Database/blob/main/logic_nolep/ln-address-book.md)
-- [Cloud Database](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/study_material/cloud-database.md)
 - [Mongoose (ODM)](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/study_material/mongoose.md)
 - [Prisma (next level ORM)](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/study_material/prisma-next-level-orm.md)
 - [Logic Nolep (Inventory System) :exploding_head: ](https://github.com/RPN-Phase-1/Week3-Backend-MVC-Database/blob/main/study_material/middleware.md)
