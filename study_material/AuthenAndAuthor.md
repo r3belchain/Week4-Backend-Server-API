@@ -1,7 +1,3 @@
-<p align="center">
-<img src="https://i.postimg.cc/SQX1CCDy/rpn.png" width="100" height="100" border="10"/>
-</p>
-
 # Authentication & Authorization
 
 Authentication (Otentikasi) dan Authorization (Otorisasi) adalah dua konsep kunci dalam pengembangan backend yang berperan penting dalam menjaga keamanan dan mengendalikan akses ke sumber daya sistem. Berikut penjelasan singkat tentang keduanya:
