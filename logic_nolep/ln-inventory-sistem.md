@@ -5,7 +5,8 @@ Ini adalah Project/Tugas berkelanjutan di week4, kalian boleh memilih untuk mema
 tapi untuk contoh yang gua berikan disini, gua memakai prisma jadi kita pake mysql dari railway.
 pertama kita pahamin Relasi Inventory System terlebih dahulu: 
 
-![image](https://github.com/user-attachments/assets/8172b22b-959b-4305-b12b-cfc9c4b439b0)
+![image](https://github.com/user-attachments/assets/d61f1920-e44a-431d-91d9-bfa849590d2a)
+
 
 Ini adalah List API yang perlu di buat di Inventory System
 
