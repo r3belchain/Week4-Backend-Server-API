@@ -64,15 +64,20 @@ Postman Collection adalah alat yang sangat bermanfaat dalam pengembangan dan pen
 Contoh Documentation API di postman:
 Jadi selain kalian bisa testing API di postman, hasil collection yang dibuat di postman ini bisa berfungsi untuk dokumentasi API untuk frontend. di collection overview kalian bisa nulis description tentang API kalian 
 
-![image](https://github.com/user-attachments/assets/2ca05046-8d4a-4e57-ba33-83d6da1ac5d9)
+![image](https://github.com/user-attachments/assets/3bda4c6a-f2fe-42de-bdba-7d4fbfe49665)
 
 Sebisa mungkin, kalian membuat collection folder yang rapih. agar frontend kita tidak bingung dengan service yang kita buat.
 
-![image](https://github.com/user-attachments/assets/7cac120b-cdec-47d5-b169-e556779dc4a4)
+![image](https://github.com/user-attachments/assets/99f6cb0b-9208-44c0-a74c-92f8225950cd)
 
 lalu untuk sharing API kalian ke pada team developer kalian, kalian bisa membuat workspace bersama dengan team developer kalian agar mempermudah komunikasi API 
 
 ![image](https://github.com/user-attachments/assets/a6cce335-d7dd-4db9-8bb6-94179395b968)
+
+atau kalian bisa sharing dengan cara export filenya. cara untuk sharing postman collection kalian itu, tinggal export aja di bagian button tiga ini.
+
+![image](https://github.com/user-attachments/assets/35dfe52a-d5d0-47ea-b208-c2a1f7d769c3)
+
 
 sisanya kalian bisa memberitau ke frontend untuk set up environtment var yang di pake di postman, jadi frontend bisa langsung testing backendnya dengan postman dia sendiri.
 
@@ -99,6 +104,9 @@ Swagger adalah sebuah kerangka kerja yang digunakan untuk mendefinisikan, dokume
 
 Dengan Swagger Documentation, pengembang dapat membuat API yang lebih mudah digunakan, mendokumentasikan API dengan lebih baik, dan memungkinkan pengguna dan pengembang lain untuk mengakses dan memahami API dengan mudah. Ini adalah alat yang sangat bermanfaat dalam pengembangan dan dokumentasi API. 
 
-![image](https://github.com/user-attachments/assets/6aa0150e-1839-4941-bab0-e42cd7a615c2)
+![image](https://github.com/user-attachments/assets/3f3a8583-2815-412f-9e9a-838bb1c6d65a)
+
+![image](https://github.com/user-attachments/assets/d45e12f2-6d84-4d48-826a-d7dfb14134b6)
+
 
 Untuk swagger documentation kita perlu set up config di backend kita, karena dokumentasi ini base on route API. Contoh Implementasi nya kita akan belajar di next section pas kalian memakai template backend gua.
