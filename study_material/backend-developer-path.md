@@ -71,11 +71,11 @@ https://www.youtube.com/watch?v=LuBXYYEyv88
 
 ini contoh page profile gua:
 
-# Gambar
+![image](https://github.com/user-attachments/assets/64e56c2f-87e5-4675-92bd-d10451014f17)
 
 jangan lupa pin project kalian, biar keliatan di profile page githubnya:
 
-# Gambar
+![image](https://github.com/user-attachments/assets/6a7516b7-94f6-4084-ba36-eac6442454db)
 
 ## Backend Developer Certification Hunt
 Penilaian jaman sekarang untuk seorang fresh grad biasanya diliat dari sertifikasi yang sudah dia dapatkan (entah kenapa di indo masih banyak gini). HR biasanya ke impress sama orang orang yang punya sertifikasi. disini gua kasih guide gimana cara dapetin sertifikasi yang bagus.
