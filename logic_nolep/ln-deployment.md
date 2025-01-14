@@ -157,38 +157,39 @@ Fungsi createNodejsApp ini adalah membuat server baru dengan versi yang lebih ke
 Setelah changes Set Up Production, jangan lupa push ke repo kalian. 
 disini gua push ke branch master
 
-# Gambar
+![image](https://github.com/user-attachments/assets/230f5c3b-ce75-4032-bd2f-0f3760162440)
 
 ## Set Up Railway
 Sekarang Server Kita sudah ready di deploy, saatnya set up cloud service untuk mengarahkan CI/CD ke repo yang sudah kita buat.
 
 Buka Dashboard Railway kalian , pilih project yang sudah ada database kalian. coba klik kanan, nanti bakal muncul menu seperti ini : 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/0a2382ac-fda8-44ef-9ce2-4e481828bc5d)
 
 Klik Github Repo, nanti kalian bakal disuruh login memakai github.
 Setelah connect github, railway bisa melihat semua repo kalian. Langsung aja Search repo inventory system kalian.
 
-# Gambar
+![image](https://github.com/user-attachments/assets/eb4bac75-9db7-4cdb-b722-76762f167512)
 
 setelah di klik repo kalian, otomatis railway akan menjalankan build project 
 di case project kita, railway akan menjalankan createNodejsApp.js 
 
-# Gambar2
+![image](https://github.com/user-attachments/assets/ebb3cdd9-e850-4dba-8490-74ee2f018e1d)
+![image](https://github.com/user-attachments/assets/9226f072-ad3a-4ad1-912a-831a8f3b9064)
 
 Sebelum itu, apps kalian sudah pasti error. karena kita belum set up env pada cloud service railway. (ENV hal yang wajib di set up selama kalian deploy).
 
 buka tab variables dan isi semua env variables kalian :
 
-# Gambar
+![image](https://github.com/user-attachments/assets/a20e66a3-85d7-4ba5-b739-31cf17dc4995)
 
 setelah diisi maka hasilnya kayak gini :
 
-# Gambar
+![image](https://github.com/user-attachments/assets/86b2b754-07dc-4f7a-8dda-fcfb09488e7d)
 
 Karena cloud serivice kita sudah ada fitur CI/CD, otomatis server akan build ulang atau deploy ulang apps kita. 
 
-# Gambar
+![image](https://github.com/user-attachments/assets/8e688b44-696b-4748-831f-3a374988d169)
 
 Setelah Build selesai, kalian check Settings tab -> Networking.
 klik generate domain, untuk membuka domain pada backend kalian.
