@@ -26,6 +26,7 @@ dan diakhir week4 gua bakal share template backend gua yang sering gua pake buat
 - [Backend Deployment](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/study_material/backend-deployment.md)
 - [Logic Nolep (Deployment) :exploding_head: ](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/logic_nolep/ln-deployment.md)
 - [Template Engine EJS](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/study_material/template-engine-ejs.md)
+- [Logic Nolep Group Project 💀](https://github.com/RPN-Phase-1/Week4-Backend-Server-API/blob/main/logic_nolep/ln-group-project.md)
 
 
 Mari Lanjut ke minggu selanjutnya, [LET'S GOOOO :rocket::rocket::rocket::rocket: ](https://github.com/RPN-Phase-1/Week5-Backend-Advance-Concept)
