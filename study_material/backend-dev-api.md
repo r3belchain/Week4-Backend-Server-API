@@ -1,11 +1,3 @@
-# Week4-Backend-Development-API
-
-Hello phase 1 fighter, perjalanan belajar backend kalian sudah mencapai 50%. kalian sudah mempelajari cara backend API bekerja dan handling logic dengan database SQLite. good job buat kalian semua yang mengerjakan semua task nya 👍🏻.  kita akan lanjutkan perjalanan kita untuk menyempurnakan struktur backend API kita dengan implement middleware next level. karena struktur kalian sekarang itu masih belum ready untuk production dan masih berantakan, di week4 ini kita akan buat backend API yang scalable, clean, dan ready to production code. mulai dari refactoring cara komunikasi database kita meggunakan ORM (prisma), trus kita belajar database No SQL yaitu mongoDb sampai kita bisa menggunakan cloud database, kita juga akan membuat errorhandler untuk handling error yang rapih, membuat logging system agar setiap eksekusi code tercatat di server, kita akan mempelajari Security backend mulai dari hashing JWT, helmet untuk protect headers, dan cors untuk mencegah dispatch dari website lain. Kita juga bakal refactoring cara validasi payload dari body menggunakan joi. semua teknologi ini memakai techstack terupdate jadi week4 ini penting untuk karir backend kalian. 
-
-dan diakhir week4 gua bakal share template backend gua yang sering gua pake buat kerja, ini template flexible dan ready dipake buat handle backend apapun, udah ada table user + token , Auth + Role System, Validation, logger, testing, sekaligus API User Management (karena semua aplikasi pasti punya user), Email Service, Server Configuration, dan feature buat dokumentasi swagger. ini khusus untuk RPN sebagai bonus kalian ngikutin materi dari gua 🙂 . gua yakin ini template bakal berguna banget buat karir backend kalian, gua bakal ngerasa seneng juga kalau banyak yang make dan bermanfaat buat kita semua.
-
-langsung aja kita mulai materi pertama kita yaitu API Type (theory).
-
 ## API Type
 Dari yang kita pelajarin sebelumnya, sebenernya itu adalah salah satu dari tipe API yaitu REST API. Api itu mempunyai banyak tipe, karena yang umum itu REST jadi kita belajar REST saja di phase 1. sementara kita harus tau dulu semua tipe API dan fungsinya untuk apa.
 
