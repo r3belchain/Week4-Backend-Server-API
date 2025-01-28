@@ -20,14 +20,14 @@ Oke persiapan selesai, saat nya kita bahas group project phase 1.
 
 ### Group Logic Nolep
 Di logic nolep ini kalian akan membuat aplikasi backend dengan view template engine EJS, aplikasi yang akan dibuat itu bebas se kreatif kalian. Tapi kalian tidak boleh membuat ide project yang sudah dibuat oleh para murid phase 1 sebelumnya.
+
 RPN Phase 1 Ban List :  
 - Employee System (BAN) 
 - Article management (BAN) 
 - Rent Book System (BAN) 
 - Simple Chat App (BAN) 
 - Task Manager (BAN)
-- Calorie Tracker (BAN)
-
+  
 sebisa mungkin aplikasi kalian harus ada storynya atau background idea dan masalah yang di solve dari aplikasi kalian. jadi kalian wajib membuat ppt/slide presentasi ketika demo nanti. (buat saja simple, dan lebih banyak penjelasan ketimbang tulisan).
 
 struktur presentasi: 
