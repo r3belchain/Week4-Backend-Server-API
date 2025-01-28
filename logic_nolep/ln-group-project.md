@@ -1,6 +1,6 @@
 Ini Group Project kalian di phase 1, dimana kalian akan berpasangan 2 orang untuk mengerjakan project backend dengan view dinamis menggunakan EJS . Sebelum mulai tugas nya ada beberapa hal yang harus kalian ketahui terlebih dahulu.
 
-***Github Collaboration***
+### Github Collaboration
 Ini pertama kalinya kalian melakukan group project, jadi kalian harus belajar cara kolaborasi menggunakan git.
 cara paling mudah untuk kolaborasi pertama kalian adalah membuat branch development masing masing.
 
@@ -9,16 +9,16 @@ dari 1 repo itu kita buat 3 branch (master, zexo, harkon)
 nah bagian bagian tugas gua, bakal push ke branch zexo, sedangkan bagiannya harkon dia push ke branch harkon.
 cara kolaborasinya dari branch masing masing bisa PR ke master dan merge disitu. jangan lupa git pull dari master setiap salah satu kalian ada update/PR ke master.
 
-***Submit Tugas***
+### Submit Tugas
 Di Group Project kalian buat repo sendiri dan set up masing masing, nanti link githubnya bisa kalian taruh di PR week5 . jadi di repo org week5 ga ada push apa apa, cuman PR link group project kalian. setelah PR , nanti gua bakal schedule cari waktu untuk kalian demo group project ini ke semua anak RPN (Demo Stage).
 
-***Zexo Template***
+### Zexo Template
 Sesuai janji gua, kalian boleh pake template backend yang udah gua sediain (agar mempercepat setup backend kalian).
 https://github.com/zexoverz/express-prisma-template
 
 Oke persiapan selesai, saat nya kita bahas group project phase 1.
 
-***Group Logic Nolep***
+### Group Logic Nolep
 Di logic nolep ini kalian akan membuat aplikasi backend dengan view template engine EJS, aplikasi yang akan dibuat itu bebas se kreatif kalian. Tapi kalian tidak boleh membuat ide project yang sudah dibuat oleh para murid phase 1 sebelumnya.
 RPN Phase 1 Ban List :  
 - Employee System (BAN) 
