@@ -22,11 +22,7 @@ OAuth adalah protokol otentikasi yang digunakan untuk memberikan akses terbatas 
 dari semua tipe ini , yang paling penting untuk kalian pelajari itu ada 3.  Rest, GraphQL dan websocket.
 
 ini resource untuk explore 2 API tersbut.
-GraphQL : https://devsaurus.com/graphql
-Websocket: https://danangarif202.medium.com/websocket-client-server-socket-io-react-js-express-js-1956690fb5fd
+- GraphQL : https://devsaurus.com/graphql
+- Websocket: https://danangarif202.medium.com/websocket-client-server-socket-io-react-js-express-js-1956690fb5fd
 
 ****note***: websocket itu realtime API, jadi pasti tektokan sama client. client disini menggunakan react, boleh kalian coba langsung atau cuma baca baca aja gpp.
-
-https://devsaurus.com/graphql
-
-https://danangarif202.medium.com/websocket-client-server-socket-io-react-js-express-js-1956690fb5fd
