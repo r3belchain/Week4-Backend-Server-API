@@ -26,6 +26,7 @@ RPN Phase 1 Ban List :  
 - Rent Book System (BAN) 
 - Simple Chat App (BAN) 
 - Task Manager (BAN)
+- Calorie Tracker (BAN)
 
 sebisa mungkin aplikasi kalian harus ada storynya atau background idea dan masalah yang di solve dari aplikasi kalian. jadi kalian wajib membuat ppt/slide presentasi ketika demo nanti. (buat saja simple, dan lebih banyak penjelasan ketimbang tulisan).
 
