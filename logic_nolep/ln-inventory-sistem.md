@@ -43,7 +43,7 @@ Ini adalah List API yang perlu di buat di Inventory System
 - Get Order by ID: GET /api/orders/{orderId}
 - Update Order: PUT /api/orders/{orderId}
 - Delete Order: DELETE /api/orders/{orderId}
-- Get Orders by User: GET /api/users/{orderId}/orders
+- Get Orders by User: GET /api/users/{userId}/orders
 
 6. **OrderItem API**:
 - Create OrderItem: POST /api/order-items
