@@ -88,11 +88,6 @@ di pindah kan ke
 
 ya sebenarnya kalian hanya mengganti url database aja, dari env TEST_DB_URL kemudian move ke env DB_URL. Agar database kita memakai env test database.
 
-NOTE: Ini kebetulan kita memakai railway, jadi misal kalian memakai hosting db lain lebih bagus membuat 2 env db url
-seperti DATABASE_URL dan DATABASE_URL_TESTING agar lebih safety. 
-
-![image](https://github.com/user-attachments/assets/e36bea3b-6137-49fa-928a-0f7cea2fe646)
-
 Nah dari database baru ini, Integration Testing akan memakainya untuk eksekusi test case API. Tetapi kita perlu push schema terlebih dahulu sebelum testing dimulai, karena database baru ini sudah pasti kosong isinya.
 
 ```js
