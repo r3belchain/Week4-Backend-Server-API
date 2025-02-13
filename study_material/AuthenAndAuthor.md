@@ -198,12 +198,12 @@ buatlah file auth.js di folder middleware
 `middleware/auth.js`
 ```js
 const passport = require('passport');
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const ApiError = require('../utils/ApiError');
 
 const verifyCallback = (req, resolve, reject) => async (err, user, info) => {
   if (err || info || !user) {
-    return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate'));
+    return reject(new ApiError(status.UNAUTHORIZED, 'Please authenticate'));
   }
   req.user = user;
 
@@ -245,7 +245,7 @@ Pertama tama kita perlu service untuk create user dan get user by email, karena 
 
 `services/user.service.js`
 ```js
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const prisma = require('../../prisma/client')
 const ApiError = require('../utils/ApiError');
 const bcrypt = require('bcryptjs');
@@ -429,7 +429,7 @@ Ini service yang hanya berhubungan dengan AUTH API saja, sementara kita buat 1 f
 
 `services/auth.service.js`
 ```js
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const userService = require('./user.service');
 const ApiError = require('../utils/ApiError');
 const bcrypt = require('bcryptjs');
@@ -445,7 +445,7 @@ const loginUserWithEmailAndPassword = async (email, password) => {
   const validPassword = await bcrypt.compare(password, user.password);
 
   if (!user || !validPassword) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect email or password');
+    throw new ApiError(status.UNAUTHORIZED, 'Incorrect email or password');
   }
   return user;
 };
@@ -468,7 +468,7 @@ Sekarang kita pakai 3 services tadi untuk membuat proses dari register dan login
 
 `controllers/auth.controller.js`
 ```js
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const catchAsync = require('../utils/catchAsync');
 const { authService, userService, tokenService } = require('../services');
 const ApiError = require('../utils/ApiError');
@@ -477,12 +477,12 @@ const register = catchAsync(async (req, res) => {
   const existingUser = await userService.getUserByEmail(req.body.email);
 
   if (existingUser) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+    throw new ApiError(status.BAD_REQUEST, 'Email already taken');
   }
 
   const userCreated = await userService.createUser(req.body);
   const tokens = await tokenService.generateAuthTokens(userCreated);
-  res.status(httpStatus.CREATED).send({ userCreated, tokens });
+  res.status(status.CREATED).send({ userCreated, tokens });
 });
 
 const login = catchAsync(async (req, res) => {
@@ -554,7 +554,7 @@ Update app.js kalian untuk menambahkan router v1
 `app.js`
 ```js 
 const express = require('express');
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const router = require('./routes');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
@@ -600,7 +600,7 @@ app.use('/v1', routes);
 
 // send 404 error jika route tidak ada
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  next(new ApiError(status.NOT_FOUND, 'Not found'));
 });
 
 // convert error jadi Instance API Error jika ada error yang tidak ketangkap
