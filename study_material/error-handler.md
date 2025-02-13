@@ -238,11 +238,14 @@ ini adalah contoh kombo maut ApiError instance + Catch Async:
 const catchAsync = require('../utils/catchAsync');
 const { userService } = require('../services');
 const ApiError = require('../utils/ApiError');
+const { userService } = require('../services');
+const { status } = require('http-status');
+
 
 const getUser = catchAsync(async (req, res) => {
   const user = await userService.getUserById(req.params.userId);
   if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    throw new ApiError(status.NOT_FOUND, 'User not found');
   }
   res.send(user);
 });
@@ -256,7 +259,7 @@ buatlah file error.js di folder middleware
 
 `middleware/error.js`
 ```js
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const config = require('../config/config');
 const logger = require('../config/logger');
 const ApiError = require('../utils/ApiError');
@@ -265,7 +268,6 @@ const { Prisma } = require('@prisma/client')
 const errorConverter = (err, req, res, next) => {
   let error = err;
   if (!(error instanceof ApiError)) {
-
     // if error from axios or http request
     if(error.response){
       const message = err.response.data.message || err.response.data
@@ -277,18 +279,29 @@ const errorConverter = (err, req, res, next) => {
     }else if(err instanceof Prisma.PrismaClientKnownRequestError){
       // Handling Prisma Error
       logger.info("handlePrismaError")
-      error = handlePrismaError(err);
-    }else{
+      error = handlePrismaClientError(err);
+
+    }else if (err instanceof Prisma.PrismaClientInitializationError) {
+      // Handle initialization errors (e.g., connection issues)
+      error = new ApiError(500, `Prisma Initialization Error: Database Connection Issues`)
+
+    } else if (err instanceof Prisma.PrismaClientValidationError) {
+      // Handle validation errors (e.g., invalid input data)
+      console.error(':', err.message);
+      error = new ApiError(500, `Prisma Validation Error: Invalid Input Data`)
+
+    } else{
       // Handling Global Error
       const statusCode = error.statusCode
-      const message = error.message || httpStatus[statusCode];
+      const message = error.message || status[statusCode];
       error = new ApiError(statusCode, message, false, err.stack);
+
     }
   }
   next(error);
 };
 
-const handlePrismaError = (err) => {
+const handlePrismaClientError = (err) => {
   switch (err.code) {
       case 'P2002':
           // handling duplicate key errors
@@ -309,8 +322,8 @@ const handlePrismaError = (err) => {
 const errorHandler = (err, req, res, next) => {
   let { statusCode, message } = err;
   if (config.env === 'production' && !err.isOperational) {
-    statusCode = httpStatus.INTERNAL_SERVER_ERROR;
-    message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
+    statusCode = status.INTERNAL_SERVER_ERROR;
+    message = status[status.INTERNAL_SERVER_ERROR];
   }
 
   res.locals.errorMessage = err.message;
@@ -338,7 +351,7 @@ kita akan breakdown penjelasan dari code tersebut:
 
 1. **Pengimporan Modul**:
 ```js
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const config = require('../config/config');
 const logger = require('../config/logger');
 const ApiError = require('../utils/ApiError');
@@ -408,7 +421,7 @@ const config = require('./config/config')
 const morgan = require('./config/morgan');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 
 const app = express();
 
@@ -432,7 +445,7 @@ app.get('/', (req, res) => {
 
 // send 404 error jika route tidak ada
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  next(new ApiError(status.NOT_FOUND, 'Not found'));
 });
 
 // convert error jadi Instance API Error jika ada error yang tidak ketangkap
