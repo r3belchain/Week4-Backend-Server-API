@@ -53,7 +53,7 @@ Beberapa fitur utama dan fungsi dari Helmet.js adalah sebagai berikut:
 Pasang middleware helmet.js di app.js kalian:
 ```js
 const express = require('express');
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 // const router = require('./routes');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
@@ -85,7 +85,7 @@ app.get('/', (req, res) => {
 
 // send 404 error jika route tidak ada
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  next(new ApiError(status.NOT_FOUND, 'Not found'));
 });
 
 // convert error jadi Instance API Error jika ada error yang tidak ketangkap
@@ -118,7 +118,7 @@ Pasang middleware `xss-clean` di app.js kalian:
 
 ```js
 const express = require('express');
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 // const router = require('./routes');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
@@ -154,7 +154,7 @@ app.get('/', (req, res) => {
 
 // send 404 error jika route tidak ada
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  next(new ApiError(status.NOT_FOUND, 'Not found'));
 });
 
 // convert error jadi Instance API Error jika ada error yang tidak ketangkap
@@ -190,7 +190,7 @@ Pasang Middleware Compression.js di app.js kalian:
 
 ```js
 const express = require('express');
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 // const router = require('./routes');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
@@ -230,7 +230,7 @@ app.get('/', (req, res) => {
 
 // send 404 error jika route tidak ada
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  next(new ApiError(status.NOT_FOUND, 'Not found'));
 });
 
 // convert error jadi Instance API Error jika ada error yang tidak ketangkap
@@ -264,7 +264,7 @@ Beberapa poin penting tentang `cors` dalam Node.js:
 Pasang middleware cors di app.js kalian:
 
 ```js const express = require('express');
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 // const router = require('./routes');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
@@ -309,7 +309,7 @@ app.get('/', (req, res) => {
 
 // send 404 error jika route tidak ada
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  next(new ApiError(status.NOT_FOUND, 'Not found'));
 });
 
 // convert error jadi Instance API Error jika ada error yang tidak ketangkap
