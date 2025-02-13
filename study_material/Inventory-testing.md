@@ -36,12 +36,11 @@ const { execSync } = require('child_process')
 const { join } = require('path')
 
 const generateDatabaseURL = () => {
-  if (!process.env.DATABASE_URL) {
+  if (!process.env.TEST_DB_URL) {
     throw new Error('please provide a database url');
   }
-  let url = process.env.DATABASE_URL
+  let url = process.env.TEST_DB_URL
 
-  url = url.replace("/railway", "/testingDb")
   return url
 };
 
@@ -50,7 +49,7 @@ const prismaBinary = join(__dirname, '..', '..', 'node_modules', '.bin', 'prisma
 
 let url = generateDatabaseURL()
 
-process.env.DATABASE_URL = url;
+process.env.DB_URL = url;
 
 const prisma = new PrismaClient({
   datasources: { db: { url } },
@@ -71,7 +70,6 @@ beforeEach(async () => {
 });
 
 afterAll(async () => {
-    await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS testingDb`);
     await prisma.$disconnect();
 });
 
@@ -82,13 +80,13 @@ Disini kalian sebenernya membuat prisma client seperti biasa, bedanya kalian per
 
 Bisa kalian liat `generateDatabaseURL` fungsi ini untuk mengganti Url database kita.
 dari :
-`DATABASE_URL="mysql://root:VE2vR87YwrTrhIzAzh7X@containers-us-west-154.railway.app:6803/railway"`
+`TEST_DB_URL="postgresql://postgres:xqPBkyNAtatEPbBgEbmNWsYuvwOevXTw@autorack.proxy.rlwy.net:45560/railway?connect_timeout=300"`
 
-menjadi:
-`DATABASE_URL="mysql://root:VE2vR87YwrTrhIzAzh7X@containers-us-west-154.railway.app:6803/testingDb"`
+di pindah kan ke 
 
-ya sebenarnya kalian hanya mengganti nama database nya saja, karena dengan mengganti nama database kalian, bisa membuat database baru di hosting railway. 
-secara default nama database dari railway itu railway makanya disini kalian hanya replace railway saja dengan testing database.
+`DB_URL="postgresql://postgres:xqPBkyNAtatEPbBgEbmNWsYuvwOevXTw@autorack.proxy.rlwy.net:45560/railway?connect_timeout=300"`
+
+ya sebenarnya kalian hanya mengganti url database aja, dari env TEST_DB_URL kemudian move ke env DB_URL. Agar database kita memakai env test database.
 
 NOTE: Ini kebetulan kita memakai railway, jadi misal kalian memakai hosting db lain lebih bagus membuat 2 env db url
 seperti DATABASE_URL dan DATABASE_URL_TESTING agar lebih safety. 
@@ -182,7 +180,7 @@ Didalam fixtures, buatlah 2 file. user.fixture.js dan `token.fixture.js`
 `user.fixture.js`
 ```js
 const bcrypt = require('bcryptjs');
-const faker = require('faker');
+const {faker} = require('faker');
 const prisma = require('../../prisma')
 const { v4 } = require('uuid')
 
