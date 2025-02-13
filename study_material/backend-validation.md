@@ -184,7 +184,7 @@ buatlah file validate.js di folder middlewares
 `middlewares/validate.js`
 ```js
 const Joi = require('joi');
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 
@@ -197,7 +197,7 @@ const validate = (schema) => (req, res, next) => {
 
   if (error) {
     const errorMessage = error.details.map((details) => details.message).join(', ');
-    return next(new ApiError(httpStatus.BAD_REQUEST, errorMessage));
+    return next(new ApiError(status.BAD_REQUEST, errorMessage));
   }
   Object.assign(req, value);
   return next();
@@ -241,7 +241,7 @@ disini gua akan contohin untuk crud API pertama kita dimana ada validasi di seti
 
 category.service.js (jangan lupa update index.js service kalian)
 ```js
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const prisma = require('../../prisma/client')
 const ApiError = require('../utils/ApiError');
 
@@ -287,7 +287,7 @@ const getCategoryById = async (id) => {
 const updateCategoryById = async (categoryId, updateBody) => {
   const category = await getCategoryById(categoryId);
   if (!category) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Category not found');
+    throw new ApiError(status.NOT_FOUND, 'Category not found');
   }
   
   const updateCategory = await prisma.category.update({
@@ -308,7 +308,7 @@ const updateCategoryById = async (categoryId, updateBody) => {
 const deleteCategoryById = async (categoryId) => {
   const category = await getCategoryById(categoryId);
   if (!category) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Category not found');
+    throw new ApiError(status.NOT_FOUND, 'Category not found');
   }
 
   const deleteCategorys = await prisma.category.deleteMany({
@@ -331,7 +331,7 @@ module.exports = {
 
 `category.controller.js`
 ```js
-const httpStatus = require('http-status');
+const {status} = require('http-status');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { categoryService } = require('../services');
@@ -339,8 +339,8 @@ const { categoryService } = require('../services');
 const createCategory = catchAsync(async (req, res) => {
   const category = await categoryService.createCategory(req.body);
 
-  res.status(httpStatus.CREATED).send({
-    status: httpStatus.CREATED,
+  res.status(status.CREATED).send({
+    status: status.CREATED,
     message: "Create Category Success",
     data: category
   });
@@ -349,8 +349,8 @@ const createCategory = catchAsync(async (req, res) => {
 const getCategorys = catchAsync(async (req, res) => {
   const result = await categoryService.queryCategorys();
   
-  res.status(httpStatus.OK).send({
-    status: httpStatus.OK,
+  res.status(status.OK).send({
+    status: status.OK,
     message: "Get Categorys Success",
     data: result
   });
@@ -359,11 +359,11 @@ const getCategorys = catchAsync(async (req, res) => {
 const getCategory = catchAsync(async (req, res) => {
   const category = await categoryService.getCategoryById(req.params.categoryId);
   if (!category) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Category not found');
+    throw new ApiError(status.NOT_FOUND, 'Category not found');
   }
   
-  res.status(httpStatus.OK).send({
-    status: httpStatus.OK,
+  res.status(status.OK).send({
+    status: status.OK,
     message: "Get Category Success",
     data: category
   });
@@ -372,8 +372,8 @@ const getCategory = catchAsync(async (req, res) => {
 const updateCategory = catchAsync(async (req, res) => {
   const category = await categoryService.updateCategoryById(req.params.categoryId, req.body);
   
-  res.status(httpStatus.OK).send({
-    status: httpStatus.OK,
+  res.status(status.OK).send({
+    status: status.OK,
     message: "Update Category Success",
     data: category
   });
@@ -382,8 +382,8 @@ const updateCategory = catchAsync(async (req, res) => {
 const deleteCategory = catchAsync(async (req, res) => {
   await categoryService.deleteCategoryById(req.params.categoryId);
   
-  res.status(httpStatus.OK).send({
-    status: httpStatus.OK,
+  res.status(status.OK).send({
+    status: status.OK,
     message: "Delete Category Success",
     data: null
   });
@@ -401,7 +401,7 @@ module.exports = {
 disini kita ada refactoring code sedikit, response balikan API harus berformat:
 ```
 {
-  status: httpStatus.OK,
+  status: status.OK,
   message: "message",
   data: data
 }
