@@ -94,27 +94,40 @@ buat file file config EsLint di root project inventory system:
 ```
 ini file untuk mengaktifkan eslint disemua file js kalian.
 
-`.eslintrc.json`
-```json
-{
-  "env": {
-    "node": true,
-    "jest": true
-  },
-  "extends": ["airbnb-base", "plugin:jest/recommended", "plugin:security/recommended", "plugin:prettier/recommended"],
-  "plugins": ["jest", "security", "prettier"],
-  "parserOptions": {
-    "ecmaVersion": 2018
-  },
-  "rules": {
-    "no-console": "error",
-    "func-names": "off",
-    "no-underscore-dangle": "off",
-    "consistent-return": "off",
-    "jest/expect-expect": "off",
-    "security/detect-object-injection": "off"
+`eslint.config.js`
+```js
+const globals = require('globals');
+const js = require('@eslint/js');
+const jest = require('eslint-plugin-jest');
+const security = require('eslint-plugin-security');
+
+module.exports = [
+  {
+    files: ['**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+        ...globals.jest
+      }
+    },
+    plugins: {
+      jest,
+      security
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...jest.configs.recommended.rules,
+      ...security.configs.recommended.rules,
+      'no-unused-vars': 'warn',
+      'no-undef': 'warn',
+      'security/detect-non-literal-fs-filename': 'off',
+      'jest/expect-expect': 'off',
+      'security/detect-object-injection': 'off',
+    }
   }
-}
+];
 ```
 
 Ini adalah file untuk konfigurasi untuk ESLint, sebuah alat linting kode JavaScript yang digunakan untuk menganalisis dan memeriksa kode JavaScript Kalian. Konfigurasi ini menentukan aturan dan pengaturan khusus yang akan diterapkan oleh ESLint saat memeriksa kode Kalian. Mari kita perinci apa yang diatur dalam konfigurasi ini:
@@ -124,18 +137,13 @@ Ini adalah file untuk konfigurasi untuk ESLint, sebuah alat linting kode JavaScr
 - `"node": true"`: Ini mengaktifkan aturan yang berkaitan dengan lingkungan Node.js, sehingga ESLint akan memeriksa kode Kalian dengan mempertimbangkan lingkungan Node.js.
 - `"jest": true"`: Ini mengaktifkan aturan yang berkaitan dengan lingkungan pengujian Jest, yang berguna jika Kalian menggunakan Jest sebagai kerangka pengujian.
 
-2. `extends`: Ini adalah daftar konfigurasi yang akan di-extend atau diambil oleh konfigurasi ESLint Kalian. Dalam kasus ini:
-- `"airbnb-base"`: Ini adalah konfigurasi dari Airbnb yang merupakan standar komunitas yang ketat untuk gaya penulisan kode JavaScript. Ini memastikan Kalian mengikuti gaya penulisan kode yang ketat.
-- `"plugin:jest/recommended"`: Ini mengambil konfigurasi rekomendasi dari plugin Jest untuk pengujian unit.
-- `"plugin:security/recommended"`: Ini mengambil konfigurasi rekomendasi dari plugin keamanan, yang memeriksa potensi masalah keamanan dalam kode Kalian.
-- `"plugin:prettier/recommended"`: Ini mengambil konfigurasi rekomendasi dari plugin Prettier, yang membantu memformat kode Kalian secara otomatis untuk menjaga konsistensi.
+2. `plugins`: Ini adalah daftar plugin yang digunakan oleh ESLint. Dalam kasus ini, plugin Jest, plugin keamanan, dan plugin Prettier digunakan.
+- `"plugin:jest"`: Ini mengambil konfigurasi rekomendasi dari plugin Jest untuk pengujian unit.
+- `"plugin:security"`: Ini mengambil konfigurasi rekomendasi dari plugin keamanan, yang memeriksa potensi masalah keamanan dalam kode Kalian.
 
+3. `languageOptions`: Ini adalah opsi untuk mengkonfigurasi pemahaman kode. Dalam kasus ini, ecmaVersion disetel ke 2018, yang menunjukkan bahwa kode Kalian mengikuti spesifikasi ECMAScript 2018.
 
-3. `plugins`: Ini adalah daftar plugin yang digunakan oleh ESLint. Dalam kasus ini, plugin Jest, plugin keamanan, dan plugin Prettier digunakan.
-
-4. `parserOptions`: Ini adalah opsi untuk mengkonfigurasi pemahaman kode. Dalam kasus ini, ecmaVersion disetel ke 2018, yang menunjukkan bahwa kode Kalian mengikuti spesifikasi ECMAScript 2018.
-
-5. `rules`: Ini adalah daftar aturan yang Kalian atur untuk proyek Kalian. Beberapa aturan dapat dimatikan atau diubah dari nilai default. Misalnya, `"no-console": "error"` berarti bahwa menggunakan `console.log` akan menghasilkan kesalahan (error), dan `"func-names": "off"` mematikan aturan yang mengharuskan fungsi memiliki nama. Aturan-aturan lainnya juga dimatikan atau dimodifikasi sesuai dengan preferensi Kalian.
+4. `rules`: Ini adalah daftar aturan yang Kalian atur untuk proyek Kalian. Beberapa aturan dapat dimatikan atau diubah dari nilai default. Misalnya, `"no-console": "error"` berarti bahwa menggunakan `console.log` akan menghasilkan kesalahan (error), dan `"func-names": "off"` mematikan aturan yang mengharuskan fungsi memiliki nama. Aturan-aturan lainnya juga dimatikan atau dimodifikasi sesuai dengan preferensi Kalian.
 
 Dengan konfigurasi ini, Kalian memastikan bahwa ESLint akan memeriksa kode Kalian sesuai dengan aturan yang ketat, termasuk gaya penulisan kode dari Airbnb, serta aturan terkait keamanan dan pengujian. Juga, Prettier digunakan untuk memastikan bahwa kode Kalian diformat dengan baik secara otomatis. Jika Kalian menggunakan Jest, konfigurasi ini juga mengaktifkan aturan yang relevan untuk Jest.
 
