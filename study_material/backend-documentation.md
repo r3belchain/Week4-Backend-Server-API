@@ -2,7 +2,8 @@
 
 Belajar API documentation adalah langkah penting dalam memahami dan menggunakan antarmuka pemrograman aplikasi (API). API documentation memberikan panduan yang jelas tentang cara menggunakan API, termasuk endpoint, parameter, tipe data yang digunakan, dan cara berinteraksi dengan API tersebut. 
 
-***Kenapa dokumentasi itu penting ? ***
+***Kenapa dokumentasi itu penting ?***
+
 Backend Developer sudah pasti akan bekerjasama dengan frontend dalam development aplikasi, API API yang dibuat sama backend sudah pasti di konsum sama frontend. nah masalahnya front end itu tidak tau detail dari API tersebut, karena dia tidak melihat sisi detail flow yang ada dibackend dan gimana cara backend bekerja. (front end hanya tau result nya saja) jadi itu tidak bagus.
 
 Cara frontend tau flow dari backend dan maksud dari setiap API yang backend buat yaitu dengan dokumentasi API.
