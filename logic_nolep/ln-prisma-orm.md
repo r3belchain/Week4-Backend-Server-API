@@ -5,7 +5,7 @@ Buat lah project bakend menggunakan express js + prisma dan mysql untuk database
 - terdiri 2 table atau lebih
 - wajib menggunakan relasi prisma (one to many atau yang lain)
 
-atau kalian boleh ikutin dari project simple yang gua buat.
+atau kalian boleh ikutin dari project simple yang gua buat (Fancy TODO).
 
 ![image](https://github.com/user-attachments/assets/2f373a45-f4e7-403b-88b9-25aae6081834)
 
