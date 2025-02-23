@@ -1,15 +1,7 @@
 # Logic Nolep (mongoose ODM)
 
-kerjakan simple project dari source ini atau kalian boleh mengerjakan fancy-todo tetapi menggunakan mongoose.
-
-https://www.geeksforgeeks.org/node-js-crud-operations-using-mongoose-and-mongodb-atlas/
-
-
 ***Fancy Todo ODM***
 
-Jika kalian ingin membuat fancy todo odm, jangan lupa ganti struktur kalian seperti ini: 
-
-Fancy Todo ODM
 Jika kalian ingin membuat fancy todo odm, jangan lupa ganti struktur kalian seperti ini: 
 
 ![image](https://github.com/user-attachments/assets/14f89613-a0b8-443f-8a7d-ea9291eea2ae)
