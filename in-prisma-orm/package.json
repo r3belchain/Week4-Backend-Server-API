@@ -11,13 +11,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon ./src/index.js"
   },
   "_moduleAliases": {
-    "@prisma": "./prisma/client",
     "@controllers": "./src/controllers",
     "@routes": "./src/routes",
-    "@service": "./src/services",
+    "@services": "./src/services",
     "@utils": "./src/utils",
     "@middleware": "./src/middleware"
   },

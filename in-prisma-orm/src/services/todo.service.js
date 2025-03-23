@@ -1,44 +1,74 @@
-const prisma = require("@prisma");
-const AppError = require("@utils/AppError");
+const prisma = require("../../prisma/client");
 
 const createTodo = async (datas) => {
-  const { title, description, userId } = datas;
-  let { status } = datas;
+  try {
+    const { title, description, userId } = datas;
+    let { status } = datas;
 
-  if (!status) status = "DRAFT";
+    if (!status) status = "DRAFT";
 
-  const create = await prisma.todo.create({
-    data: { title, description, status, userId },
-  });
+    const create = await prisma.todo.create({
+      data: { title, description, status, userId },
+    });
 
-  return create;
+    return create;
+  } catch (error) {
+    console.error("Error creating todo:", error.message);
+    throw new Error(error.message);
+  }
 };
 
 const deleteTodo = async (id) => {
-  const todo = await prisma.todo.findUnique({
-    where: { id: parseInt(id) },
-  });
-  if (!todo) {
-    throw new AppError("Todo not found!", 404);
+  try {
+    const todo = await prisma.todo.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (!todo) {
+      throw new Error("Todo not found!");
+    }
+
+    const deleted = await prisma.todo.delete({
+      where: { id: parseInt(id) },
+    });
+
+    return deleted;
+  } catch (error) {
+    console.error("Error deleting todo:", error.message);
+    throw new Error(error.message);
   }
-  const deleted = await prisma.todo.delete({ where: { id: parseInt(id) } });
-  return deleted;
 };
 
 const updateTodo = async (id, data) => {
-   const todo = await prisma.todo.findUnique({
-     where: { id: parseInt(id) },
-   });
+  try {
+    const todo = await prisma.todo.findUnique({
+      where: { id: parseInt(id) },
+    });
 
-   if(!todo) {
-    throw new AppError('Todo not found!', 404)
-   }
-  const update = await prisma.todo.update({ where: { id: parseInt(id) }, data });
-  return update;
+    if (!todo) {
+      throw new Error("Todo not found!");
+    }
+
+    const update = await prisma.todo.update({
+      where: { id: parseInt(id) },
+      data,
+    });
+
+    return update;
+  } catch (error) {
+    console.error("Error updating todo:", error.message);
+    throw new Error(error.message);
+  }
 };
 
 const getAllTodos = async () => {
-  return await prisma.todo.findMany();
+  try {
+    const todos = await prisma.todo.findMany();
+    return todos;
+  } catch (error) {
+    console.error("Error getting all todos:", error.message);
+    throw new Error(error.message);
+  }
 };
 
 module.exports = { createTodo, deleteTodo, updateTodo, getAllTodos };

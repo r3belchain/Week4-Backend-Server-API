@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
+const routes = require('./routes')
 
-const errorHandler = require("@middleware/errorHandler");
 
-app.use(errorHandler);
 app.use(express.json());
+app.use("/api", routes);  // Prefix "/api"
+
 
 app.get("/", (req, res) => {
   res.send("hello world");

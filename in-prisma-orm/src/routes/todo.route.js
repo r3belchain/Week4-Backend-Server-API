@@ -10,8 +10,6 @@ const {
 
 
 router.route("/todo").get(getAllTodos).post(createTodo);
-
-router.put("/todo/:id", updateTodo)
-router.delete("/todo/:id", deleteTodo)
+router.route("/todo/:id").put(updateTodo).delete(deleteTodo);
 
 module.exports = router
