@@ -1,18 +1,25 @@
-const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
-dotenv.config();
+const passport = require('passport');
+const { status } = require('http-status');
+const ApiError = require('../utils/ApiError');
+const tokenService = require('../services/token.service')
 
-const auth = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
-  if (!token) return res.status(401).json({ message: "Akses ditolak!" });
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (error) {
-    res.status(401).json({ message: "Token tidak valid" });
+const verifyCallback = (req, resolve, reject) => async (err, user, info) => {
+  if (err || info || !user) {
+    return reject(new ApiError(status.UNAUTHORIZED, 'Please authenticate'));
   }
+
+
+  req.user = user;
+
+  resolve();
+};
+
+const auth = () => async (req, res, next) => {
+  return new Promise((resolve, reject) => {
+    passport.authenticate('jwt', { session: false }, verifyCallback(req, resolve, reject))(req, res, next);
+  })
+    .then(() => next())
+    .catch((err) => next(err));
 };
 
 module.exports = auth;
