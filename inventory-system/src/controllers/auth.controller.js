@@ -15,8 +15,6 @@ const register = catchAsync(async (req, res) => {
   res.status(status.CREATED).send({ userCreated, tokens });
 });
 
-
-
 const login = catchAsync(async (req, res) => {
   const { email, password } = req.body;
   const user = await authService.loginUserWithEmailAndPassword(email, password);
@@ -24,22 +22,19 @@ const login = catchAsync(async (req, res) => {
   res.send({ user, tokens });
 });
 
-
-
 const logout = catchAsync(async (req, res) => {
-  const token = req.headers.authorization?.split(' ')[1]; 
-
-  if (!token) {
-    throw new ApiError(status.BAD_REQUEST, 'Invalid Token!');
+  const authHeader = req.headers['authorization'];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(400).json({ message: 'Refresh token is required' });
   }
+  const refreshToken = authHeader.split(' ')[1];
 
-  await tokenService.blacklistToken(token); 
-
+  await tokenService.blacklistToken(refreshToken);
   res.status(status.OK).send({ message: 'Logout successful' });
 });
 
 module.exports = {
   register,
   login,
-  logout
+  logout,
 };

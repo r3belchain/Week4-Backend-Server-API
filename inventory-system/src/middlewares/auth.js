@@ -1,7 +1,7 @@
 const passport = require('passport');
 const { status } = require('http-status');
 const ApiError = require('../utils/ApiError');
-const tokenService = require('../services/token.service')
+// const tokenService = require('../services/token.service')
 
 const verifyCallback = (req, resolve, reject) => async (err, user, info) => {
   if (err || info || !user) {

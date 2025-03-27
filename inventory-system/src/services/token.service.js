@@ -87,9 +87,8 @@ const generateAuthTokens = async (user) => {
   };
 };
 
-
 /**
- * Blacklist token
+ * Blacklist REFRESH token type
  * @param {string} token
  * @returns {Promise<Token>}
  */
@@ -100,17 +99,6 @@ const blacklistToken = async (token) => {
   });
 };
 
-/**
- * Check isTokenBlacklisted
- * @param {string} token
- * @returns {Promise<Token>}
- */
-const isTokenBlacklisted = async (token) => {
-  const blacklistedToken = await prisma.token.findFirst({
-    where: { token, blacklisted: true },
-  });
-  return !!blacklistedToken; 
-};
 
 module.exports = {
   generateToken,
@@ -118,5 +106,4 @@ module.exports = {
   verifyToken,
   generateAuthTokens,
   blacklistToken,
-  isTokenBlacklisted
 };
