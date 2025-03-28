@@ -30,14 +30,14 @@ const getProduct = catchAsync(async (req, res) => {
   }
 
   res.status(status.OK).send({
-    status: status.OK,
+    status: status.OK,      
     message: 'Get Category Success',
     data: category,
   });
 });
 const getProductsByUser = catchAsync(async (req, res) => {
   const { userId } = req.params;
-  const products = await productService.getProductsByuser(userId);
+  const products = await productService.getProductsByUser(userId);
   if (!products.length) {
     throw new ApiError(status.NOT_FOUND, 'No products found for this user');
   }
