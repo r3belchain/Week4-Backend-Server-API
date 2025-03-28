@@ -1,9 +1,4 @@
-// Create Product: POST /api/products
-// Get All Products: GET /api/products
-// Get Product by ID: GET /api/products/{productId}
-// Update Product: PUT /api/products/{productId}
-// Delete Product: DELETE /api/products/{productId}
-// Get Products by User: GET /api/users/{userId}/products
+
 const { status } = require('http-status');
 const prisma = require('../../prisma/client');
 const ApiError = require('../utils/ApiError');
