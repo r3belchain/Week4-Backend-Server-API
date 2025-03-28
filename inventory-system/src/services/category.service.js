@@ -51,7 +51,7 @@ const updateCategoryById = async (categoryId, updateBody) => {
     where: {
       id: categoryId,
     },
-    data: updateBody,
+    data: {...updateBody},
   });
 
   return updateCategory;
@@ -68,7 +68,7 @@ const deleteCategoryById = async (categoryId) => {
     throw new ApiError(status.NOT_FOUND, 'Category not found');
   }
 
-  const deleteCategorys = await prisma.category.deleteMany({
+  const deleteCategorys = await prisma.category.delete({
     where: {
       id: categoryId,
     },
