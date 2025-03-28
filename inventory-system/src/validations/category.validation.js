@@ -15,7 +15,7 @@ const getCategory = {
 
 const updateCategory = {
   params: Joi.object().keys({
-    categoryId: Joi.required().custom(objectId),
+    categoryId: Joi.string().required().custom(objectId),
   }),
   body: Joi.object()
     .keys({

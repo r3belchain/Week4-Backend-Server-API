@@ -24,7 +24,7 @@ const getAllProducts = catchAsync(async (req, res) => {
 });
 
 const getProduct = catchAsync(async (req, res) => {
-  const category = await productService.getProductById(req.params.productId)
+  const category = await productService.getProductById(req.params.productId);
   if (!category) {
     throw new ApiError(status.NOT_FOUND, 'Product not found');
   }
@@ -36,8 +36,8 @@ const getProduct = catchAsync(async (req, res) => {
   });
 });
 const getProductsByUser = catchAsync(async (req, res) => {
-  const {userId} = req.params
-  const products = await productService.getProductsByuser(userId)
+  const { userId } = req.params;
+  const products = await productService.getProductsByuser(userId);
   if (!products.length) {
     throw new ApiError(status.NOT_FOUND, 'No products found for this user');
   }
@@ -70,10 +70,10 @@ const deleteProduct = catchAsync(async (req, res) => {
 });
 
 module.exports = {
- createProduct,
- getAllProducts,
- getProductsByUser,
- getProduct,
- updateProduct,
- deleteProduct
+  createProduct,
+  getAllProducts,
+  getProductsByUser,
+  getProduct,
+  updateProduct,
+  deleteProduct,
 };

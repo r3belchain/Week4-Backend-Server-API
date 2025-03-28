@@ -15,7 +15,7 @@ const getUserByEmail = {
 
 const updateUser = {
   params: Joi.object().keys({
-    userId: Joi.required().custom(objectId),
+    userId: Joi.string().required().custom(objectId),
   }),
   body: Joi.object()
     .keys({
@@ -31,8 +31,8 @@ const deleteUser = {
 };
 
 module.exports = {
- getUserById,
- getUserByEmail,
- updateUser,
- deleteUser
+  getUserById,
+  getUserByEmail,
+  updateUser,
+  deleteUser,
 };
