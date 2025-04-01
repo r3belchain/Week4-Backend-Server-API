@@ -35,19 +35,7 @@ const getProduct = catchAsync(async (req, res) => {
     data: category,
   });
 });
-const getProductsByUser = catchAsync(async (req, res) => {
-  const { userId } = req.params;
-  const products = await productService.getProductsByUser(userId);
-  if (!products.length) {
-    throw new ApiError(status.NOT_FOUND, 'No products found for this user');
-  }
 
-  res.status(status.OK).send({
-    status: status.OK,
-    message: 'Get products By User Success',
-    data: products,
-  });
-});
 
 const updateProduct = catchAsync(async (req, res) => {
   const product = await productService.updateProductById(req.params.productId, req.body);
@@ -72,7 +60,6 @@ const deleteProduct = catchAsync(async (req, res) => {
 module.exports = {
   createProduct,
   getAllProducts,
-  getProductsByUser,
   getProduct,
   updateProduct,
   deleteProduct,

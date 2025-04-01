@@ -16,7 +16,7 @@ const getProduct = {
     productId: Joi.string().custom(objectId),
   }),
 };
-const getProductByUser = {
+const getProductsByUser = {
   params: Joi.object().keys({
     userId: Joi.string().custom(objectId),
   }),
@@ -46,5 +46,5 @@ module.exports = {
  getProduct,
  updateProduct,
  deleteProduct,
- getProductByUser
+ getProductsByUser
 };

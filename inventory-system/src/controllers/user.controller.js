@@ -2,7 +2,7 @@ const { status } = require('http-status');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { userService } = require('../services');
-
+const { productService } = require('../services');
 
 const getAllUsers = catchAsync(async (req, res) => {
   const users = await userService.getAllUsers();
@@ -40,7 +40,7 @@ const getUserByEmail = catchAsync(async (req, res) => {
   });
 });
 
-const updateuser = catchAsync(async (req, res) => {
+const updateUser = catchAsync(async (req, res) => {
   const user = await userService.updateUserByid(req.params.userId, req.body);
   if (!user) {
     throw new ApiError(status.NOT_FOUND, 'User Not Found');
@@ -65,10 +65,25 @@ const deleteUser = catchAsync(async (req, res) => {
   });
 });
 
+const getProductsByUser = catchAsync(async (req, res) => {
+  const { userId } = req.params;
+  const products = await productService.getProductsByUser(userId);
+  if (!products.length) {
+    throw new ApiError(status.NOT_FOUND, 'No products found for this user');
+  }
+
+  res.status(status.OK).send({
+    status: status.OK,
+    message: 'Get products By User Success',
+    data: products,
+  });
+});
+
 module.exports = {
   getAllUsers,
   getUserByEmail,
   getUserById,
-  updateuser,
-  deleteUser
+  updateUser,
+  deleteUser,
+  getProductsByUser
 };

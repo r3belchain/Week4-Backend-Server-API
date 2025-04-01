@@ -30,3 +30,6 @@ yarn-error.log*
 # Optional: Build Files
 dist/
 build/
+
+
+todo-list.txt
