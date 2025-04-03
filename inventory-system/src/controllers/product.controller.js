@@ -30,12 +30,11 @@ const getProduct = catchAsync(async (req, res) => {
   }
 
   res.status(status.OK).send({
-    status: status.OK,      
+    status: status.OK,
     message: 'Get Category Success',
     data: category,
   });
 });
-
 
 const updateProduct = catchAsync(async (req, res) => {
   const product = await productService.updateProductById(req.params.productId, req.body);
