@@ -17,6 +17,5 @@ router
   .patch(auth(), validate(productValidation.updateProduct), productController.updateProduct)
   .delete(auth(), validate(productValidation.deleteProduct), productController.deleteProduct);
 
-router.route('/:userId').get(auth(), validate(productValidation.getProductByUser), productController.getProductsByUser);
 
 module.exports = router;

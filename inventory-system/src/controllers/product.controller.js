@@ -24,15 +24,15 @@ const getAllProducts = catchAsync(async (req, res) => {
 });
 
 const getProduct = catchAsync(async (req, res) => {
-  const category = await productService.getProductById(req.params.productId);
-  if (!category) {
+  const product = await productService.getProductById(req.params.productId);
+  if (!product) {
     throw new ApiError(status.NOT_FOUND, 'Product not found');
   }
 
   res.status(status.OK).send({
     status: status.OK,
     message: 'Get Category Success',
-    data: category,
+    data: product,
   });
 });
 
@@ -47,7 +47,7 @@ const updateProduct = catchAsync(async (req, res) => {
 });
 
 const deleteProduct = catchAsync(async (req, res) => {
-  await productService.deleteProductById(req.params.id);
+  await productService.deleteProductById(req.params.productId);
 
   res.status(status.OK).send({
     status: status.OK,

@@ -91,7 +91,7 @@ const getOrdersByUser = async (userId) => {
   if(!user) {
      throw new ApiError(status.NOT_FOUND, 'User not found');
   }
-  return await prisma.product.findMany({
+  return await prisma.order.findMany({
     where: { userId: parseInt(userId) },
   });
 };

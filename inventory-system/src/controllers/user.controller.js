@@ -3,6 +3,7 @@ const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { userService } = require('../services');
 const { productService } = require('../services');
+const { orderService } = require('../services');
 
 const getAllUsers = catchAsync(async (req, res) => {
   const users = await userService.getAllUsers();
@@ -79,11 +80,27 @@ const getProductsByUser = catchAsync(async (req, res) => {
   });
 });
 
+
+const getOrdersByUser = catchAsync(async (req, res) => {
+  const { userId } = req.params;
+  const orders = await orderService.getOrdersByUser(userId);
+  if (!orders.length) {
+    throw new ApiError(status.NOT_FOUND, 'No orders found for this user');
+  }
+
+  res.status(status.OK).send({
+    status: status.OK,
+    message: 'Get orders By User Success',
+    data: orders,
+  });
+});
+
 module.exports = {
   getAllUsers,
   getUserByEmail,
   getUserById,
   updateUser,
   deleteUser,
-  getProductsByUser
+  getProductsByUser,
+  getOrdersByUser
 };
