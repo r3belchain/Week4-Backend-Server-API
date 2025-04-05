@@ -42,5 +42,5 @@ module.exports = {
   getOrdersByUser,
   createOrder,
   updateOrder,
-  deleteOrder
+  deleteOrder,
 };
