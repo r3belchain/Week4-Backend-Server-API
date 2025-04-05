@@ -4,17 +4,6 @@ const catchAsync = require('../utils/catchAsync');
 const orderItemService  = require('../services');
 
 
-const createOrderItem = catchAsync(async (req, res) => {
-  const orderItem = await orderItemService.createOrderItem(req.body);
-
-  res.status(status.CREATED).send({
-    status: status.CREATED,
-    message: 'Create Order Item Success',
-    data: orderItem,
-  });
-});
-
-
 const getAllOrderItems = catchAsync(async (req, res) => {
   const orderItems = await orderItemService.getAllOrderItems();
 
@@ -62,7 +51,6 @@ const deleteOrderItem = catchAsync(async (req, res) => {
 });
 
 module.exports = {
-  createOrderItem,
   getAllOrderItems,
   getOrderItemById,
   updateOrderItem,

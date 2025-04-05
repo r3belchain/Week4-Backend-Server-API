@@ -1,18 +1,40 @@
 const { status } = require('http-status');
 const prisma = require('../../prisma/client');
 const ApiError = require('../utils/ApiError');
+const userService = require('./user.service')
 
 /**
  * Create a order
  * @param {Object} orderBody
+ * @param {ObjectId} userId
  * @returns {Promise<Order>}
  */
+
 const createOrder = async (orderBody) => {
-  return prisma.order.create({
-    data: orderBody,
+  const { orderitems, ...orderData } = orderBody;
+
+  return await prisma.$transaction(async (tx) => {
+    const order = await tx.order.create({
+      data: orderData,
+    });
+
+    const orderItemsWithOrderId = orderitems.map((item) => ({
+      ...item,
+      orderId: order.id,
+    }));
+
+    await tx.orderItem.createMany({
+      data: orderItemsWithOrderId,
+    });
+
+    const orderWithItems = await tx.order.findUnique({
+      where: { id: order.id },
+      include: { orderitems: true },
+    });
+
+    return orderWithItems;
   });
 };
-
 
 /**
  * Get All Orders
@@ -36,7 +58,6 @@ const getOrderById = async (id) => {
   });
 };
 
-
 /**
  * Update order by id
  * @param {ObjectId} orderId
@@ -53,12 +74,11 @@ const updateOrderById = async (orderId, updateBody) => {
     where: {
       id: orderId,
     },
-    data:{...updateBody},
+    data: { ...updateBody },
   });
 
   return updateOrder;
 };
-
 
 /**
  * Delete order by id
@@ -80,21 +100,20 @@ const deleteOrderById = async (orderId) => {
   return deleteOrder;
 };
 
-
 /**
  * Get Order By UserID
  * @param {ObjectId} userId
  * @returns {Promise<Order>}
  */
 const getOrdersByUser = async (userId) => {
-  const user = await getOrderById(userId)
-  if(!user) {
-     throw new ApiError(status.NOT_FOUND, 'User not found');
+  const user = await userService.getUserById(userId);
+  if (!user) {
+    throw new ApiError(status.NOT_FOUND, 'User not found');
   }
   return await prisma.order.findMany({
-    where: { userId: parseInt(userId) },
+    where: { userId },
+    include: { orderitems: true },
   });
 };
 
-
-module.exports = {createOrder, getAllOrders, getOrderById, updateOrderById, deleteOrderById, getOrdersByUser}
+module.exports = { createOrder, getAllOrders, getOrderById, updateOrderById, deleteOrderById, getOrdersByUser };

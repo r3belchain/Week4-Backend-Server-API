@@ -28,12 +28,18 @@ const getOrderById = catchAsync(async (req, res) => {
 });
 
 const createOrder = catchAsync(async (req, res) => {
-  const order = await orderService.createOrder(req.body);
+  const userId = req.user.id;
+  const orderData = {
+    ...req.body,
+    userId, 
+  };
+
+  const createdOrder = await orderService.createOrder(orderData);
 
   res.status(status.CREATED).send({
     status: status.CREATED,
-    message: 'Create Order Success',
-    data: order,
+    message: 'Order created successfully',
+    data: createdOrder,
   });
 });
 

@@ -8,7 +8,6 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth(), validate(orderItemValidation.createOrderItem), orderItemController.createOrderItem)
   .get(auth(), orderItemController.getAllOrderItems);
 
 router

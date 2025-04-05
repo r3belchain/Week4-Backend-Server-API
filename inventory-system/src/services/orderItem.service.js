@@ -6,11 +6,57 @@ const {orderService} = require('./order.service');
 /**
  * Create a order item
  * @param {Object} orderItemBody
- * @returns {Promise<OrderItem>}
+ * @param {ObjectId} userId
+ * @returns {Promise<orderItems>}
  */
-const createOrderItem = async (orderItemBody) => {
-  return prisma.orderItem.create({
-    data: orderItemBody,
+const createOrderWithItems = async (userId, orderBody) => {
+  const { orderItems, totalPrice, customerName, customerEmail } = orderBody;
+  return await prisma.$transaction(async (tx) => {
+    const order = await tx.order.create({
+      data: {
+        userId,
+        totalPrice,
+        customerName,
+        customerEmail,
+        date: new Date(),
+      },
+    });
+
+    for (const item of orderItems) {
+      const product = await tx.product.findUnique({
+        where: { id: item.productId },
+      });
+
+      if (!product) {
+        throw new ApiError(status.NOT_FOUND, `Produk ID ${item.productId} tidak ditemukan`);
+      }
+
+      if (product.quantity < item.quantity) {
+        throw new ApiError(status.BAD_REQUEST, `Stok tidak cukup untuk ${product.name}`);
+      }
+
+      // Kurangi stok
+      await tx.product.update({
+        where: { id: item.productId },
+        data: {
+          quantity: {
+            decrement: item.quantity,
+          },
+        },
+      });
+
+      // Buat OrderItem
+      await tx.orderItem.create({
+        data: {
+          orderId: order.id,
+          productId: item.productId,
+          quantity: item.quantity,
+          unitPrice: item.unitPrice,
+        },
+      });
+    }
+
+    return order;
   });
 };
 
@@ -94,7 +140,7 @@ const getOrderItemsByOrder = async (orderId) => {
 };
 
 module.exports = {
-  createOrderItem,
+  createOrderWithItems,
   getAllOrderItems,
   getOrderItemById,
   updateOrderItemById,
