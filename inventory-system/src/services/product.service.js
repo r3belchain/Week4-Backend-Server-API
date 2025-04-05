@@ -18,9 +18,24 @@ const createProduct = async (productBody) => {
  * Get All Products
  * @returns {Promise<products>}
  */
-const getAllProducts = async () => {
-  const products = await prisma.product.findMany();
-  return products;
+const getAllProducts = async (page = 1, limit = 10) => {
+  const skip = (page - 1) * limit;
+
+  const [products, total] = await Promise.all([
+    prisma.product.findMany({
+      skip,
+      take: limit,
+      orderBy: { createdAt: 'desc' }, // optional
+    }),
+    prisma.product.count(),
+  ]);
+
+  return {
+    products,
+    total,
+    page,
+    totalPages: Math.ceil(total / limit),
+  };
 };
 
 /**
@@ -94,4 +109,15 @@ const getProductsByUser = async (userId) => {
   });
 };
 
-module.exports = {createProduct, getAllProducts, getProductById, updateProductById, deleteProductById, getProductsByUser}
+const getProductsByCategory = async (category) => {
+  return await prisma.product.findMany({
+    where: {
+      category: {
+        contains: category,
+        mode: 'insensitive', 
+      },
+    },
+  });
+};
+
+module.exports = {createProduct, getAllProducts, getProductById, updateProductById, deleteProductById, getProductsByUser, getProductsByCategory}

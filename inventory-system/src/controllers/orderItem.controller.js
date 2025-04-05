@@ -5,12 +5,20 @@ const orderItemService  = require('../services');
 
 
 const getAllOrderItems = catchAsync(async (req, res) => {
-  const orderItems = await orderItemService.getAllOrderItems();
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  const result = await orderItemService.getAllOrderItems(page, limit);
 
   res.status(status.OK).send({
     status: status.OK,
     message: 'Get Order Items Success',
-    data: orderItems,
+    data: result.orderItems,
+    pagination: {
+      total: result.total,
+      page: result.page,
+      totalPages: result.totalPages,
+    },
   });
 });
 

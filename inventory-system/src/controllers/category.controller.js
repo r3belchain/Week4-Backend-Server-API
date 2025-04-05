@@ -14,12 +14,20 @@ const createCategory = catchAsync(async (req, res) => {
 });
 
 const getCategorys = catchAsync(async (req, res) => {
-  const result = await categoryService.queryCategorys();
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  const result = await categoryService.queryCategorys(page, limit);
 
   res.status(status.OK).send({
     status: status.OK,
-    message: 'Get Categorys Success',
-    data: result,
+    message: 'Get Categories Success',
+    data: result.categories,
+    pagination: {
+      total: result.total,
+      page: result.page,
+      totalPages: result.totalPages,
+    },
   });
 });
 

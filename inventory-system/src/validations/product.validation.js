@@ -41,10 +41,19 @@ const deleteProduct = {
   }),
 };
 
+const getProductsByCategory = {
+  query: Joi.object().keys({
+    category: Joi.string().required(),
+  }),
+};
+
+
+
 module.exports = {
  createProduct,
  getProduct,
  updateProduct,
  deleteProduct,
- getProductsByUser
+ getProductsByUser,
+ getProductsByCategory
 };

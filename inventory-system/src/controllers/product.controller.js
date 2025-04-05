@@ -14,12 +14,20 @@ const createProduct = catchAsync(async (req, res) => {
 });
 
 const getAllProducts = catchAsync(async (req, res) => {
-  const products = await productService.getAllProducts();
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  const result = await productService.getAllProducts(page, limit);
 
   res.status(status.OK).send({
     status: status.OK,
-    message: 'Get All Products Success',
-    data: products,
+    message: 'Get Products Success',
+    data: result.products,
+    pagination: {
+      total: result.total,
+      page: result.page,
+      totalPages: result.totalPages,
+    },
   });
 });
 
@@ -56,10 +64,31 @@ const deleteProduct = catchAsync(async (req, res) => {
   });
 });
 
+
+const getProductsByCategory = catchAsync(async (req, res) => {
+  const { category } = req.query;
+
+  if (!category) {
+    return res.status(status.BAD_REQUEST).send({
+      status: status.BAD_REQUEST,
+      message: 'Category query is required',
+    });
+  }
+
+  const products = await productService.getProductsByCategory(category);
+
+  res.status(status.OK).send({
+    status: status.OK,
+    message: `Found ${products.length} product(s) in category '${category}'`,
+    data: products,
+  });
+});
+
 module.exports = {
   createProduct,
   getAllProducts,
   getProduct,
   updateProduct,
   deleteProduct,
+  getProductsByCategory
 };

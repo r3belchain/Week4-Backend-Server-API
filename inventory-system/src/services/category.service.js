@@ -17,9 +17,24 @@ const createCategory = async (categoryBody) => {
  * Query for categorys
  * @returns {Promise<QueryResult>}
  */
-const queryCategorys = async (filter, options) => {
-  const categorys = await prisma.category.findMany();
-  return categorys;
+const queryCategorys = async (page = 1, limit = 10) => {
+ const skip = (page - 1) * limit;
+
+ const [categories, total] = await Promise.all([
+   prisma.category.findMany({
+     skip,
+     take: limit,
+     orderBy: { createdAt: 'desc' }, 
+   }),
+   prisma.category.count(),
+ ]);
+
+ return {
+   categories,
+   total,
+   page,
+   totalPages: Math.ceil(total / limit),
+ };
 };
 
 /**

@@ -64,9 +64,24 @@ const createOrderWithItems = async (userId, orderBody) => {
  * Get All Item Orders
  * @returns {Promise<orderItems>}
  */
-const getAllOrderItems = async () => {
-  const orderItems = await prisma.orderItem.findMany();
-  return orderItems;
+const getAllOrderItems = async (page = 1, limit = 10) => {
+   const skip = (page - 1) * limit;
+
+   const [orderItems, total] = await Promise.all([
+     prisma.orderItem.findMany({
+       skip,
+       take: limit,
+       orderBy: { createdAt: 'desc' }, 
+     }),
+     prisma.orderItem.count(),
+   ]);
+
+   return {
+     orderItems,
+     total,
+     page,
+     totalPages: Math.ceil(total / limit),
+   };
 };
 
 /**

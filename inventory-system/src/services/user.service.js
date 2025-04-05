@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs');
  * @returns {Promise<User>}
  */
 const createUser = async (userBody) => {
-  userBody.password = bcrypt.hash(userBody.password, 8);
+  userBody.password = await bcrypt.hash(userBody.password, 8);
 
   return await prisma.user.create({
     data: userBody,
@@ -21,9 +21,24 @@ const createUser = async (userBody) => {
  * Get all users
  * @returns {Promise<QueryResult>}
  */
-const getAllUsers = async () => {
-  const users = await prisma.user.findMany();
-  return users;
+const getAllUsers = async (page = 1, limit = 10) => {
+  const skip = (page - 1) * limit;
+
+  const [users, totalUsers] = await Promise.all([
+    prisma.user.findMany({
+      skip,
+      take: limit,
+      orderBy: { createdAt: 'desc' }, 
+    }),
+    prisma.user.count(),
+  ]);
+
+  return {
+    users,
+    total: totalUsers,
+    page,
+    totalPages: Math.ceil(totalUsers / limit),
+  };
 };
 
 /**

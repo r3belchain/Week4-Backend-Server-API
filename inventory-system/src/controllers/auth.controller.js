@@ -10,7 +10,15 @@ const register = catchAsync(async (req, res) => {
     throw new ApiError(status.BAD_REQUEST, 'Email already taken');
   }
 
-  const userCreated = await userService.createUser(req.body);
+  const userBody = req.body;
+
+  userBody.role = 'user';
+
+  if (userBody.email === 'admin@example.com') {
+    userBody.role = 'admin';
+  }
+
+  const userCreated = await userService.createUser(userBody);
   const tokens = await tokenService.generateAuthTokens(userCreated);
   res.status(status.CREATED).send({ userCreated, tokens });
 });
@@ -23,14 +31,15 @@ const login = catchAsync(async (req, res) => {
 });
 
 const logout = catchAsync(async (req, res) => {
-  const authHeader = req.headers['authorization'];
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(400).json({ message: 'Refresh token is required' });
-  }
-  const refreshToken = authHeader.split(' ')[1];
+  const { refreshToken } = req.body;
 
-  await tokenService.blacklistToken(refreshToken);
-  res.status(status.OK).send({ message: 'Logout successful' });
+  if (!refreshToken) {
+    return res.status(status.BAD_REQUEST).json({ message: 'Refresh token is required' });
+  }
+
+  await authService.logout(refreshToken);
+
+  res.status(status.NO_CONTENT).send();
 });
 
 module.exports = {

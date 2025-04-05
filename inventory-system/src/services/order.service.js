@@ -40,9 +40,24 @@ const createOrder = async (orderBody) => {
  * Get All Orders
  * @returns {Promise<orders>}
  */
-const getAllOrders = async () => {
-  const orders = await prisma.order.findMany();
-  return orders;
+const getAllOrders = async (page = 1, limit = 10) => {
+  const skip = (page - 1) * limit;
+
+  const [orders, total] = await Promise.all([
+    prisma.order.findMany({
+      skip,
+      take: limit,
+      orderBy: { createdAt: 'desc' }, // optional: urut dari yang terbaru
+    }),
+    prisma.order.count(),
+  ]);
+
+  return {
+    orders,
+    total,
+    page,
+    totalPages: Math.ceil(total / limit),
+  };
 };
 
 /**

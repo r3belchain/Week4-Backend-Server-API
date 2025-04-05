@@ -6,12 +6,20 @@ const { productService } = require('../services');
 const { orderService } = require('../services');
 
 const getAllUsers = catchAsync(async (req, res) => {
-  const users = await userService.getAllUsers();
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  const result = await userService.getAllUsers(page, limit);
 
   res.status(status.OK).send({
     status: status.OK,
     message: 'Get Users Success',
-    data: users,
+    data: result.users,
+    pagination: {
+      total: result.total,
+      page: result.page,
+      totalPages: result.totalPages
+    }
   });
 });
 

@@ -2,6 +2,7 @@ const { status } = require('http-status');
 const userService = require('./user.service');
 const ApiError = require('../utils/ApiError');
 const bcrypt = require('bcryptjs');
+const tokenService = require('./token.service')
 
 /**
  * Login with username and password
@@ -19,6 +20,15 @@ const loginUserWithEmailAndPassword = async (email, password) => {
   return user;
 };
 
+/**
+ * Logout by blacklisting refresh token
+ * @param {string} refreshToken
+ */
+const logout = async (refreshToken) => {
+  await tokenService.blacklistToken(refreshToken);
+};
+
 module.exports = {
   loginUserWithEmailAndPassword,
+  logout
 };
