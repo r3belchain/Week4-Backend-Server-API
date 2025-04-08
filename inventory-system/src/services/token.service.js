@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const moment = require('moment');
 const config = require('../config/config');
 const { tokenTypes } = require('../config/token');
-const prisma = require('../../prisma/client');
+const prisma = require('../../prisma');
 
 /**
  * Generate token
@@ -99,7 +99,6 @@ const blacklistToken = async (token) => {
     data: { blacklisted: true },
   });
 };
-
 
 module.exports = {
   generateToken,

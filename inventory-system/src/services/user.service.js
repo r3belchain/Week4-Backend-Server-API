@@ -1,5 +1,5 @@
 const { status } = require('http-status');
-const prisma = require('../../prisma/client');
+const prisma = require('../../prisma');
 const ApiError = require('../utils/ApiError');
 const bcrypt = require('bcryptjs');
 
@@ -16,7 +16,6 @@ const createUser = async (userBody) => {
   });
 };
 
-
 /**
  * Get all users
  * @returns {Promise<QueryResult>}
@@ -28,7 +27,7 @@ const getAllUsers = async (page = 1, limit = 10) => {
     prisma.user.findMany({
       skip,
       take: limit,
-      orderBy: { createdAt: 'desc' }, 
+      orderBy: { createdAt: 'desc' },
     }),
     prisma.user.count(),
   ]);
@@ -58,10 +57,9 @@ const getUserByEmail = async (email) => {
  * @returns {Promise<User>}
  */
 const getUserById = async (id) => {
-  return  await prisma.user.findUnique({
+  return await prisma.user.findUnique({
     where: { id },
   });
-
 };
 
 /**
@@ -71,15 +69,14 @@ const getUserById = async (id) => {
  */
 
 const updateUserByid = async (id, updateData) => {
-  const user = await getUserById(id)
-   if (!user) {
-     throw new ApiError(status.NOT_FOUND, 'User not found');
-   }
+  const user = await getUserById(id);
+  if (!user) {
+    throw new ApiError(status.NOT_FOUND, 'User not found');
+  }
   return await prisma.user.update({
     where: { id },
-    data: {...updateData}
+    data: { ...updateData },
   });
-    
 };
 
 /**
@@ -94,13 +91,11 @@ const deleteUserById = async (id) => {
   });
 };
 
-
-
 module.exports = {
   createUser,
   getUserByEmail,
   updateUserByid,
   deleteUserById,
   getUserById,
-  getAllUsers
+  getAllUsers,
 };

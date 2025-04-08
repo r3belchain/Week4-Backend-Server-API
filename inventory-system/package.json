@@ -16,7 +16,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
-    "prettier:fix": "prettier --write **/*.js"
+    "prettier:fix": "prettier --write **/*.js",
+    "prepare": "husky install",
+    "test": "jest -i --colors --verbose --detectOpenHandles",
+    "test:watch": "jest -i --watchAll",
+    "coverage": "jest -i --coverage",
+    "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls"
   },
   "keywords": [
     "node",
@@ -65,6 +70,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@faker-js/faker": "^9.6.0",
     "coveralls": "^3.1.1",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",

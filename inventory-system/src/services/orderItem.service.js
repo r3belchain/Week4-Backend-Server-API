@@ -1,7 +1,7 @@
 const { status } = require('http-status');
-const prisma = require('../../prisma/client');
+const prisma = require('../../prisma');
 const ApiError = require('../utils/ApiError');
-const {orderService} = require('./order.service');
+const { orderService } = require('./order.service');
 
 /**
  * Create a order item
@@ -65,23 +65,23 @@ const createOrderWithItems = async (userId, orderBody) => {
  * @returns {Promise<orderItems>}
  */
 const getAllOrderItems = async (page = 1, limit = 10) => {
-   const skip = (page - 1) * limit;
+  const skip = (page - 1) * limit;
 
-   const [orderItems, total] = await Promise.all([
-     prisma.orderItem.findMany({
-       skip,
-       take: limit,
-       orderBy: { createdAt: 'desc' }, 
-     }),
-     prisma.orderItem.count(),
-   ]);
+  const [orderItems, total] = await Promise.all([
+    prisma.orderItem.findMany({
+      skip,
+      take: limit,
+      orderBy: { createdAt: 'desc' },
+    }),
+    prisma.orderItem.count(),
+  ]);
 
-   return {
-     orderItems,
-     total,
-     page,
-     totalPages: Math.ceil(total / limit),
-   };
+  return {
+    orderItems,
+    total,
+    page,
+    totalPages: Math.ceil(total / limit),
+  };
 };
 
 /**

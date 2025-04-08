@@ -1,6 +1,5 @@
-
 const { status } = require('http-status');
-const prisma = require('../../prisma/client');
+const prisma = require('../../prisma');
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -67,12 +66,11 @@ const updateProductById = async (productId, updateBody) => {
     where: {
       id: productId,
     },
-    data:{...updateBody},
+    data: { ...updateBody },
   });
 
   return updateProduct;
 };
-
 
 /**
  * Delete product by id
@@ -100,9 +98,9 @@ const deleteProductById = async (productId) => {
  * @returns {Promise<Product>}
  */
 const getProductsByUser = async (userId) => {
-  const user = await getProductById(userId)
-  if(!user) {
-     throw new ApiError(status.NOT_FOUND, 'User not found');
+  const user = await getProductById(userId);
+  if (!user) {
+    throw new ApiError(status.NOT_FOUND, 'User not found');
   }
   return await prisma.product.findMany({
     where: { userId: parseInt(userId) },
@@ -114,10 +112,18 @@ const getProductsByCategory = async (category) => {
     where: {
       category: {
         contains: category,
-        mode: 'insensitive', 
+        mode: 'insensitive',
       },
     },
   });
 };
 
-module.exports = {createProduct, getAllProducts, getProductById, updateProductById, deleteProductById, getProductsByUser, getProductsByCategory}
+module.exports = {
+  createProduct,
+  getAllProducts,
+  getProductById,
+  updateProductById,
+  deleteProductById,
+  getProductsByUser,
+  getProductsByCategory,
+};
