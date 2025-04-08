@@ -9,7 +9,7 @@ This backend system is built with **Node.js**, **Express**, **Prisma**, and **My
 ## 📌 Features
 
 - ✅ JWT-based Authentication
-- 👤 User CRUD 
+- 👤 User CRUD
 - 📦 Product Management (per User)
 - 📃 Order Management (per User)
 - 🔎 Pagination, Filtering, and Search
@@ -113,20 +113,61 @@ Delete a user by ID.
 
 ---
 
-### 📦 Product Endpoints
+🛍 Products
 
-#### `GET /api/users/:userId/products`
+🆕 POST /products
 
-Get products linked to a user.
+Create product.
 
-- ❌ Error `404 Not Found`:
+Body:
 
-```json
 {
-  "status": 404,
-  "message": "No products found for this user"
+"name": "Product name",
+"description": "...",
+"price": 100,
+"category": "electronics"
 }
-```
+
+📄 GET /products
+
+Get list of products (with pagination & filters).
+
+Query Parameters (optional):
+
+page
+
+limit
+
+search
+
+category
+
+Response:
+
+{
+"status": 200,
+"message": "Get Products Success",
+"data": [...],
+"pagination": {...}
+}
+
+🔍 GET /products/:productId
+
+Get product by ID.
+
+✏️ PATCH /products/:productId
+
+Update product.
+
+❌ DELETE /products/:productId
+
+Delete product.
+
+🔍 GET /products/search?category=clothing
+
+Get products filtered by category.
+
+````
 
 ---
 
@@ -143,7 +184,7 @@ Get orders linked to a user.
   "status": 404,
   "message": "No orders found for this user"
 }
-```
+````
 
 ---
 
@@ -305,11 +346,4 @@ All API responses follow the same format:
 
 ## 🧑‍💻 Author
 
-Made with ❤️ by Azhar Aufa ([Instagram @mfatxt](https://instagram.com/mfatxt))  
-GitHub: [r3belchain](https://github.com/r3belchain)
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome. Feel free to fork and improve the project!
+Made with ❤️ by r3bel
